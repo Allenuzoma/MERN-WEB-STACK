@@ -52,13 +52,131 @@ npm install express
 
 Create index.js file:
 touch index.js
-Install the dotenv module
+
+
+Install the dotenv module:
 npm install dotenv
-![image](https://github.com/user-attachments/assets/408df954-2910-44a5-b1d9-ec6725d40a16)
+
+![image](https://github.com/user-attachments/assets/db5f837c-92dc-4948-ba2d-3938adbfca15)
+
 
 Use nano editor to open the index.js file
 
 Copy the following code into the index.js file:
+
+const express = require('express');
+
+const app = express();
+
+const port = process.env.PORT || 5000;
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
+app.use((req, res, next) => {
+  res.send('Welcome to Express');
+});
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
+
+
+
+![image](https://github.com/user-attachments/assets/92f271d1-1cdb-43bd-a453-d0151cb857dc)
+
+
+Next we start our server by running:
+nano index.js
+
+![image](https://github.com/user-attachments/assets/7ef12bc2-1baa-4ade-b2d1-383e3de7d2be)
+
+We can see that the server is running on port 5000. We have to create an inbound rule for this port in the security group of our instance.
+
+
+![image](https://github.com/user-attachments/assets/796a229b-4315-47f8-86c7-8ba143ddac48)
+
+
+**Step 3: Creating the routes**
+Our app is a ToDo app which will be required to create a task, display list of tasks and delete completed task.
+Each task will be associated to an endpoint and will use one of the HTTP request methods: POST, GET and DELETE.
+For each task, we will create a route.
+
+Create a folder called routes:
+
+mkdir routes
+
+Enter the directory:
+
+cd routes
+
+Create a new file
+touch api.js
+
+Copy the following code into the file:
+
+const express = require('express');
+const router = express.Router();
+
+router.get('/todos', (req, res, next) => {
+  // get placeholder
+});
+
+router.post('/todos', (req, res, next) => {
+  // post placeholder
+});
+
+router.delete('/todos/:id', (req, res, next) => {
+  // delete placeholder
+});
+
+module.exports = router;
+
+![nano api js](https://github.com/user-attachments/assets/770ea55d-94d2-4ab1-8e98-dc0d8d68645c)
+
+
+
+**Creation of Models**
+We have to create models. Models make javascript apps interactive. We will use models to define the database schema so as to be able to define the fields in the document in the mongodb database which we would be using.
+We will have to install mongoose, which is a node.js package which makes working with mongodb easier.
+Go back to the Todo directory by using cd ..:
+
+Install mongoose using the command: 
+npm install mongoose
+
+Create a folder named "models":
+mkdir models
+
+Enter the folder and create a new file "todo.js":
+cd models&&touch todo.js
+
+
+![install mongoose, creation of models and todo js in models](https://github.com/user-attachments/assets/b91f90d8-dc72-4107-9faf-f46b08f76b02)
+
+Using a text editor like nano open and paste this code:
+
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+// Create schema for todo
+const TodoSchema = new Schema({
+  action: {
+    type: String,
+    required: [true, 'The todo text field is required'],
+  },
+});
+
+// Create model for todo
+const Todo = mongoose.model('todo', TodoSchema);
+
+module.exports = Todo;
+
+![image](https://github.com/user-attachments/assets/5eef3cc3-fe45-434f-8b24-ffd541f82453)
+
+
 
 
 
