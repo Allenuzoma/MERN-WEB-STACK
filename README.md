@@ -327,6 +327,40 @@ node index.js
 
 We can see that our database is connected successfully, meaning our Backend is configured. We will test it now.
 
+**Test Backend Code without front end using RESTful API**
+We have cofigured our backend code and have also configured our database but we do not have our frontend UI configured yet, we would need React.js for that. Before thern we can test our backend code using RESTful API. We would need an API development client to test our code. We would use Postman app for this purpose.
+
+We download and install the postman app. Sign up and start to initiate HTTP requests:
+
+![post man after signin](https://github.com/user-attachments/assets/3d46ca0b-5fde-4959-b096-1074d54359eb)
+
+![postman 2](https://github.com/user-attachments/assets/e111915d-d4de-4197-9873-21ebe2196d8d)
+
+We would initiate a post request by selecting POST and entering our API using the format http://<public IP address or public DNS>:5000/api/todos 
+Enter the body tab --> raw-->JSON and enter the following statement as a task which will be stored in the application database:
+
+{
+    "action":"Finish your projects ASAP"
+}
+
+
+
+
+![http post request on postman](https://github.com/user-attachments/assets/973c3e91-55d6-4840-a2f7-317dffae569b)
+
+The task is stored in the database and can be retrieved using the GET request as seen below:
+
+
+
+![postman GET request](https://github.com/user-attachments/assets/fb034c67-20f3-435f-b78b-5644fed7ef77)
+
+To delete the task we would add the task id to the http url as thus: http://<public IP address or public DNS>:5000/api/todos/<request ID>
+
+
+
+
+
+
 
 
 
