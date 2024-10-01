@@ -255,6 +255,75 @@ Go to cluster overview page
 Choose the collections tab
 ![collections tab in db cluster overview](https://github.com/user-attachments/assets/12776ba9-828c-451e-91e8-daf30196577b)
 
+in the index.js file in the Todo directory, we would create the process .env file which would allow us to access the environmental variables but first we will need to create the .env file itself first.
+Go to the Todo dir and create .env file using the command:
+    touch .env
+Enter the file using a nano editor.
+Now we will copy the connection string into the .env file, this ensures that the connection to the database is established.
+Copy the connection string from the database cluster.
+The connection string can be gotten from the tab you can navigate from the database cluster page 
+Cluster--> Connect-->Create a db user-->Connect your application-->Select driver(node.js)
+
+![cluster connect](https://github.com/user-attachments/assets/0568a429-1c56-48dc-8867-f773fe356985)
+
+Create a db user and password
+![cluster connect 2](https://github.com/user-attachments/assets/0f5eeef9-0a3c-4a5c-8270-05a097afde54)
+
+Choose the connection method to be by driver as this contains the node.js method which we are using in the stack
+![choose a connection method](https://github.com/user-attachments/assets/e146c444-e38a-44dc-8dcd-82cea0cc2de9)
+
+Ensure to select the node.js driver
+![connection string display page](https://github.com/user-attachments/assets/9abbdfef-5039-4ee3-8c50-688da9419262)
+
+
+Copy the connection string displayed.
+This is the format of the connection string: 
+
+mongodb+srv://allen_uzoma:<db_password>@mern-db-cluster.bsio6.mongodb.net/?retryWrites=true&w=majority&appName=MERN-DB-CLUSTER
+
+
+Replace the <db_password> with the one you chose while creating the db user steps earlier.
+
+Next we would copy the db connection string into the .env file using the command:
+DB = 'mongodb+srv://allen_uzoma:<db_password>@mern-db-cluster.bsio6.mongodb.net/?retryWrites=true&w=majority&appName=MERN-DB-CLUSTER'
+
+![nano env with db connection string](https://github.com/user-attachments/assets/a4a7c961-a3ec-4590-ab03-23c8cb9a09e4)
+
+Next we would update the index.js file in the Todo directory to reflect the use of the .env file which we just copied the database string into. Enter the following command into the index.js file using a nano editor:
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const routes = require('./routes/api');
+const path = require('path');
+require('dotenv').config();
+
+const app = express();
+
+const port = process.env.PORT || 5000;
+
+// Connect to the database
+mongoose
+  .connect(process.env.DB, { useNewUrlParser: true })
+  .then(() => console.log(`Database connected successfully`))
+  .catch((err) => console.log(err));
+
+// Since mongoose's Promise is deprecated, we override it with Node's Promisemongoose.Promise = global.Promise;
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Cont>  next();
+});
+
+
+![index js updated after creating the  env file](https://github.com/user-attachments/assets/69d5aeb0-4eb8-4a25-a7e1-2d93b4b35254)
+
+
+
+
+
+
+
 
 
 
