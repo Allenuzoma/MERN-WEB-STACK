@@ -101,9 +101,13 @@ app.listen(port, () => {
 
 
 
+
+
 ![image](https://github.com/user-attachments/assets/92f271d1-1cdb-43bd-a453-d0151cb857dc)
 
 
+When we open a browser and enter out public ip address with the port 5000 attached we see our index.js output
+![website after installing expressjs ](https://github.com/user-attachments/assets/16aa2ff6-bd2e-4205-8a4e-12a7eec14c22)
 Next we start our server by running:
 nano index.js
 
@@ -354,7 +358,28 @@ The task is stored in the database and can be retrieved using the GET request as
 
 ![postman GET request](https://github.com/user-attachments/assets/fb034c67-20f3-435f-b78b-5644fed7ef77)
 
-To delete the task we would add the task id to the http url as thus: http://<public IP address or public DNS>:5000/api/todos/<request ID>
+To delete the task we would add the task id to the http url as thus http://<public IP address or public DNS>:5000/api/todos/<request ID>
+
+![postman DELETE request](https://github.com/user-attachments/assets/54da5c3c-01bc-4618-8752-854c89295a9a)
+
+We use the GET request again and can see the task have been deleted.
+
+
+![postman DELETE request RESULT](https://github.com/user-attachments/assets/333ee0ab-61e0-4f82-acba-2672ceeb30fa)
+
+
+**Step 2: Frontend Creation**
+
+Next we would create a user interface for a web client(browser) which we would use to interact with the API.
+We would use the react command as a scaffold for our app.
+We will go back to our root directory Todo$ and use the create-react-app client:
+
+$npx create-react-app client
+
+![npx create-react-app client installation](https://github.com/user-attachments/assets/3e8265f9-4426-48eb-baec-fd657177aa77)
+
+
+
 
 
 
