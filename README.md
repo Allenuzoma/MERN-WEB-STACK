@@ -140,7 +140,7 @@ module.exports = router;
 
 
 **Creation of Models**
-We have to create models. Models make javascript apps interactive. We will use models to define the database schema so as to be able to define the fields in the document in the mongodb database which we would be using.
+We have to create models. Models make javascript applications interactive. We will use models to define the database schema so as to be able to define the fields in the document in the mongodb database which we would be using.
 We will have to install mongoose, which is a node.js package which makes working with mongodb easier.
 Go back to the Todo directory by using cd ..:
 
@@ -174,7 +174,81 @@ const Todo = mongoose.model('todo', TodoSchema);
 
 module.exports = Todo;
 
-![image](https://github.com/user-attachments/assets/5eef3cc3-fe45-434f-8b24-ffd541f82453)
+![todo js code in models](https://github.com/user-attachments/assets/cbc03202-42e5-4115-af15-87757419e847)
+
+We have now created our model. What we would do next will be to update our route in api.js to make use of the new model we just created. 
+Go back to our routes directory in the Todo directory and clear what we have in the api.js file and replace with the code:
+
+const express = require('express');
+const router = express.Router();
+const Todo = require('../models/todo');
+
+router.get('/todos', (req, res, next) => {
+  // This will return all the data, exposing only the id and action field to the client
+  Todo.find({}, 'action')
+    .then((data) => res.json(data))
+    .catch(next);
+});
+
+router.post('/todos', (req, res, next) => {
+  if (req.body.action) {
+    Todo.create(req.body)
+      .then((data) => res.json(data))
+      .catch(next);
+  } else {
+    res.json({
+      error: 'The input field is empty',
+    });
+  }
+});
+
+router.delete('/todos/:id', (req, res, next) => {
+  Todo.findOneAndDelete({ _id: req.params.id })
+    .then((data) => res.json(data))
+    .catch(next);
+});
+
+module.exports = router;
+
+
+
+![updating api js to to make use of the model created](https://github.com/user-attachments/assets/5c49fe1d-f39b-4664-afd7-84bcf5ee384b)
+
+**MongoDB Database**
+Next we need a database where we can store our applications data. 
+MongoDB database is the required database and this can be gotten using mLab which offers MongoDB database as a service.
+We would visit the mLab website where we would sign up and create a database cluster using this URL:
+https://www.mongodb.com/products/try-free/platform/atlas-signup-from-mlab 
+
+![mongodb webpage](https://github.com/user-attachments/assets/1a24e066-e8ba-4f51-b162-6750febc1e8f)
+
+Create a free db cluster and launch it
+
+Go to the network tab of the db cluster created.
+
+Add IP access list entry. Add 0.0.0.0/0 to include all IP addresses.
+Set the entry to be deleted in one week.
+![add ip access list entry](https://github.com/user-attachments/assets/689e6a59-3ed6-4f9a-a5b3-841c29a574ba)
+
+![network access tab of db cluster](https://github.com/user-attachments/assets/9ad91cf8-2f24-47a6-b645-d6252054eb13)
+
+Go to cluster overview page
+![overview of db cluster](https://github.com/user-attachments/assets/2d6d9d43-fe5e-4744-9ed5-7e91edae2c6e)
+
+
+Choose the collections tab
+![collections tab in db cluster overview](https://github.com/user-attachments/assets/12776ba9-828c-451e-91e8-daf30196577b)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
