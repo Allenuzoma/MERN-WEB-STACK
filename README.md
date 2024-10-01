@@ -318,6 +318,15 @@ app.use((req, res, next) => {
 
 ![index js updated after creating the  env file](https://github.com/user-attachments/assets/69d5aeb0-4eb8-4a25-a7e1-2d93b4b35254)
 
+We used environmental variables to store information in line with security best practice to separate configuration and secret data from application code, by ensuring we do not copy ourconnection strings inside the index.js application file.
+
+Next, in the Todo directory, we would restart the server using the command:
+node index.js
+
+![node index js after connecting the db ](https://github.com/user-attachments/assets/f8a6c120-cdd2-44e5-9f95-46e74d7d2933)
+
+We can see that our database is connected successfully, meaning our Backend is configured. We will test it now.
+
 
 
 
