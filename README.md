@@ -766,9 +766,27 @@ We would use 2 Stateful and 1 Stateful component.
   + All is set. Now we will go to the Todo directory and run the command to restart the node server:
             npm run dev
 
-  + We can now go to the browser and enter the url http://localhost:300 to access the application.
+
+   ![final results npm run dev](https://github.com/user-attachments/assets/80d5163f-fd76-4632-a135-4cde53c9c10b)
+
+  
+  + We can now go to the browser and enter the url http://localhost:3000 to access the application.
+
+
+    ![final results of app running  on browser](https://github.com/user-attachments/assets/334c4fd3-bf89-4dfe-b7fa-02b859d4ef2b)
+
+
+
+    ![final results of app running  on browser 2](https://github.com/user-attachments/assets/9d65bc86-780f-4c7b-a8e6-52137668ff00)
+
+
+    ![final results of app running  on browser 3](https://github.com/user-attachments/assets/e5787f0e-4510-495d-bc10-1965efb1cb85)
+
+
+
         
 
+ 
 
 
 
