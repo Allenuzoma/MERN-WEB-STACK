@@ -470,10 +470,149 @@ We would use 2 Stateful and 1 Stateful component.
 
   ![npm install axios](https://github.com/user-attachments/assets/7aaa83d4-7754-4b87-929d-d8bd85cc0d58)
 
-  
++ Next we will open the Todo directory --> Client directory --> Src directory --> Components directory and copy the following code using the Index.js file:
+
+
+                       import React, { Component } from 'react';
+                import axios from 'axios';
+                
+                class Input extends Component {
+                  state = {
+                    action: '',
+                  };
+                
+                  addTodo = () => {
+                    const task = { action: this.state.action };
+                
+                    if (task.action && task.action.length > 0) {
+                      axios
+                        .post('/api/todos', task)
+                        .then((res) => {
+                          if (res.data) {
+                            this.props.getTodos();
+                            this.setState({ action: '' });
+                          }
+                        })
+                        .catch((err) => console.log(err));
+                    } else {
+                      console.log('input field required');
+                    }
+                  };
+                
+                  handleChange = (e) => {
+                    this.setState({
+                      action: e.target.value,
+                    });
+                  };
+                
+                  render() {
+                    let { action } = this.state;
+                    return (
+                      <div>
+                        <input type="text" onChange={this.handleChange} value={action} />
+                        <button onClick={this.addTodo}>add todo</button>
+                      </div>
+                    );
+                  }
+                }
+                
+                export default Input; 
 
 
 
+
+  ![Input js](https://github.com/user-attachments/assets/101ce727-03a0-49ce-bea6-1159b04ee637)
+
+
+  + Next we will copy the following command to the ListTodo.js file:
+          
+          
+          import React from 'react';
+          
+          const ListTodo = ({ todos, deleteTodo }) => {
+            return (
+              <ul>
+                {todos && todos.length > 0 ? (
+                  todos.map((todo) => {
+                    return (
+                      <li key={todo._id} onClick={() => deleteTodo(todo._id)}>
+                        {todo.action}
+                      </li>
+                    );
+                  })
+                ) : (
+                  <li>No todo(s) left</li>
+                )}
+              </ul>
+            );
+          };
+          
+          export default ListTodo;    
+              
+
+                  
+  ![ListTodo js in Components directory](https://github.com/user-attachments/assets/29b3578b-53f5-4293-b108-339f34622714)
+
+
+  + Next we will copy the following command to the Todo.js file
+
+
+  ![Todo js in components](https://github.com/user-attachments/assets/77618dd3-c125-46c5-bb57-73b7fa0f1d37)
+
+
+                                  import React, { Component } from 'react';
+                                  import axios from 'axios';
+                                  import Input from './Input';
+                                  import ListTodo from './ListTodo';
+                                  
+                                  class Todo extends Component {
+                                    state = {
+                                      todos: [],
+                                    };
+                                  
+                                    componentDidMount() {
+                                      this.getTodos();
+                                    }
+                                  
+                                    getTodos = () => {
+                                      axios
+                                        .get('/api/todos')
+                                        .then((res) => {
+                                          if (res.data) {
+                                            this.setState({
+                                              todos: res.data,
+                                            });
+                                          }
+                                        })
+                                        .catch((err) => console.log(err));
+                                    };
+                                  
+                                    deleteTodo = (id) => {
+                                      axios
+                                        .delete(`/api/todos/${id}`)
+                                        .then((res) => {
+                                          if (res.data) {
+                                            this.getTodos();
+                                          }
+                                        })
+                                        .catch((err) => console.log(err));
+                                    };
+                                  
+                                    render() {
+                                      let { todos } = this.state;
+                                  
+                                      return (
+                                        <div>
+                                          <h1>My Todo(s)</h1>
+                                          <Input getTodos={this.getTodos} />
+                                          <ListTodo todos={todos} deleteTodo={this.deleteTodo} />
+                                        </div>
+                                      );
+                                    }
+                                  }
+                                  
+                                  export default Todo;          
+                                  
 
 
 
