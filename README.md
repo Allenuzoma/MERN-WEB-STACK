@@ -763,6 +763,13 @@ We would use 2 Stateful and 1 Stateful component.
   ![index css final](https://github.com/user-attachments/assets/1feaed30-5759-467b-9a43-b2e9a4884d62)
 
 
+  + All is set. Now we will go to the Todo directory and run the command to restart the node server:
+            npm run dev
+
+  + We can now go to the browser and enter the url http://localhost:300 to access the application.
+        
+
+
 
 
 
