@@ -783,7 +783,7 @@ We would use 2 Stateful and 1 Stateful component.
     ![final results of app running  on browser 3](https://github.com/user-attachments/assets/e5787f0e-4510-495d-bc10-1965efb1cb85)
 
 
-
++ We can see that our Todo application is up and running.
         
 
  
