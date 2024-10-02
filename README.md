@@ -389,17 +389,65 @@ yarn create react-app client
 
 
 We can confirm the presence of the Client directory in the main root folder.
+We can also see other components like the SRC directory which will be of importance to us shortly.
+
+
 ![client directory present](https://github.com/user-attachments/assets/c12cbe7a-6df7-48f0-8949-98171e7f8c6a)
+
+
 
 Now we would need to create dependencies before we test the react app we just installed.
 We would install Concurrently and Nodemon. Concurrently is a dependency that allows us run more than one command simultaneously on the same terminal..
 We would also install nodemon which runs and monitor the server and automatically restart the server when there is a new change.
 
-![installing concurrently and nodemon](https://github.com/user-attachments/assets/15a60448-c261-4948-a9ce-f7c880283393)
+![installing concurrently and nodemon](https://github.com/user-attachments/assets/15a60448-c261-4948-a9ce-f7c880283393)ls
+
+We would update our package.json file to reflect the newly installed dependencies concurrently and nodemon.
+
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {"start": "node index.js",
+    "start-watch": "nodemon index.js",
+    "dev": "concurrently \"npm run start-watch\" \"cd client && npm start\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "mongoose": "^8.7.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1",
+    "nodemon": "^3.1.7"
+  }
+}
 
 
 
+![package json in todo dir updated to reflect concurrently and nodemon](https://github.com/user-attachments/assets/c8f9948a-bb86-4883-8745-e4f082485925)
 
+We can see from the image above that the script part of the package.json code has been corrected.
+
+In the Client folder we locate the package.json file and edit and uodate with the following code:
+  "proxy": "http://localhost:5000"
+
+This keypair is added for the purpose of being able to access the application with a browser using the url "http://localhost:5000" instead of "http://localhost:5000/api/todos"
+
+![package json file in Client dir](https://github.com/user-attachments/assets/ef7a6979-9e27-4c08-b194-96c4f5903189)
+
+In the Todo directory, run the command:
+npm run dev
+
+![npm run dev 1](https://github.com/user-attachments/assets/7c1d52a9-7084-4181-898e-28a6b76bc116)
+
+We can see that we can now view client on our browser using the url http://localhost:3000
+
+
+![npm run dev 2](https://github.com/user-attachments/assets/d3f9a32b-ebe4-4104-834d-18b5809a3cbd)
 
 
 
