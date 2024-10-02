@@ -613,11 +613,154 @@ We would use 2 Stateful and 1 Stateful component.
                                   
                                   export default Todo;          
                                   
++ Next we would do a little tweak on the App.js file in a bid to delete the react logo:
+
+
+
+            import React from 'react';
+            import Todo from './components/Todo';
+            import './App.css';
+            
+            const App = () => {
+              return (
+                <div className="App">
+                  <Todo />
+                </div>
+              );
+            };
+            
+            export default App;
+
+            
+
+  ![app js to delete logo](https://github.com/user-attachments/assets/f6ad9562-e07a-4ff6-96e2-f5ba32a02e1d)
+
+            
+
+  ![app js to delete logo](https://github.com/user-attachments/assets/30d53a27-764a-4e8e-a5ea-ff46545e732d)
+
+
+  Next we go to the App.css and copy the command to it:
+
+
+        .App {
+          text-align: center;
+          font-size: calc(10px + 2vmin);
+          width: 60%;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        
+        input {
+          height: 40px;
+          width: 50%;
+          border: none;
+          border-bottom: 2px #101113 solid;
+          background: none;
+          font-size: 1.5rem;
+          color: #787a80;
+        }
+        
+        input:focus {
+          outline: none;
+        }
+        
+        button {
+          width: 25%;
+          height: 45px;
+          border: none;
+          margin-left: 10px;
+          font-size: 25px;
+          background: #101113;
+          border-radius: 5px;
+          color: #787a80;
+          cursor: pointer;
+        }
+        
+        button:focus {
+          outline: none;
+        }
+        
+        ul {
+          list-style: none;
+          text-align: left;
+          padding: 15px;
+          background: #171a1f;
+          border-radius: 5px;
+        }
+        
+        li {
+          padding: 15px;
+          font-size: 1.5rem;
+          margin-bottom: 15px;
+          background: #282c34;
+          border-radius: 5px;
+          overflow-wrap: break-word;
+          cursor: pointer;
+        }
+        
+        @media only screen and (min-width: 300px) {
+          .App {
+            width: 80%;
+          }
+        
+          input {
+            width: 100%
+          }
+        
+          button {
+            width: 100%;
+            margin-top: 15px;
+            margin-left: 0;
+          }
+        }
+        
+        @media only screen and (min-width: 640px) {
+          .App {
+            width: 60%;
+          }
+        
+          input {
+            width: 50%;
+          }
+        
+          button {
+            width: 30%;
+            margin-left: 10px;
+            margin-top: 0;
+          }
+        }
 
 
 
 
 
+  ![app css in src](https://github.com/user-attachments/assets/e0bb6822-e1a4-44f1-82a3-2388c188d82b)
+
+
+
+  + Next we will add the following code to index.css
+
+
+
+      
+       body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        box-sizing: border-box;
+        background-color: #282c34;
+        color: #787a80;
+      }
+      
+      code {
+        font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+      }
+
+
+  ![index css final](https://github.com/user-attachments/assets/1feaed30-5759-467b-9a43-b2e9a4884d62)
 
 
 
