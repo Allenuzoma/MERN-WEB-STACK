@@ -378,6 +378,29 @@ $npx create-react-app client
 
 ![npx create-react-app client installation](https://github.com/user-attachments/assets/3e8265f9-4426-48eb-baec-fd657177aa77)
 
+NOTE: The installation using npx led to a prolonged delay which eventually led to the collapse of my EC2 instance and resulted in me launching a new instance on AWS and repeating the entire process from the installation of node.js and its dependencies up to the frontend part. You will observe a new public IP address and public DNS from this point onwards. Every other component like the mongo db cluster and the postman communication remains the same.
+To prevent a repeat of the above-mentioned scenario, I have decided to use Yarn package installer instead of npx for installing the react client using the command:
+yarn create react-app client
+
+![yarn create react-app client](https://github.com/user-attachments/assets/888f2fb6-3f0e-456d-9fbe-518d31cc6dcc)
+
+
+![installing create react app success](https://github.com/user-attachments/assets/6aa20c85-0493-42f0-a670-0cc220845625)
+
+
+We can confirm the presence of the Client directory in the main root folder.
+![client directory present](https://github.com/user-attachments/assets/c12cbe7a-6df7-48f0-8949-98171e7f8c6a)
+
+Now we would need to create dependencies before we test the react app we just installed.
+We would install Concurrently and Nodemon. Concurrently is a dependency that allows us run more than one command simultaneously on the same terminal..
+We would also install nodemon which runs and monitor the server and automatically restart the server when there is a new change.
+
+![installing concurrently and nodemon](https://github.com/user-attachments/assets/15a60448-c261-4948-a9ce-f7c880283393)
+
+
+
+
+
 
 
 
