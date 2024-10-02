@@ -444,10 +444,36 @@ npm run dev
 
 ![npm run dev 1](https://github.com/user-attachments/assets/7c1d52a9-7084-4181-898e-28a6b76bc116)
 
-We can see that we can now view client on our browser using the url http://localhost:3000
-
 
 ![npm run dev 2](https://github.com/user-attachments/assets/d3f9a32b-ebe4-4104-834d-18b5809a3cbd)
+
+We can see that we can now view client on our browser using the url http://localhost:3000 but we have to add an incoming rule for port 3000 in our virtual machine.
+
+![curl localhost 3000 s](https://github.com/user-attachments/assets/cf8bdd40-8015-4ab5-aeae-7bd8601a15d9)
+
+![application on client using url 13 40 9 37 on port 3000](https://github.com/user-attachments/assets/46a050b2-340b-4d90-bd9a-39942a13fa48)
+
+
+
+**Creating React**
+We would create the main react app next. We would use re-useable components. React makes our code modular.
+We would use 2 Stateful and 1 Stateful component.
+
+- On our Todo directory --> Client directory --> Src directory, Create Components directory and create 3 components in it. The files are Input.js, ListTodo.js and Todo.js:
+      mkdir Components&&cd Components&&touch Input.js ListTodo.js Todo.js
+
+
+* We would intall AXIOS. Axios is an promise based HTTP client for the browser and node.js
++ To install AXIOS, we would go to the client directory and use the command:
+      npm install axios
+
+
+  ![npm install axios](https://github.com/user-attachments/assets/7aaa83d4-7754-4b87-929d-d8bd85cc0d58)
+
+  
+
+
+
 
 
 
