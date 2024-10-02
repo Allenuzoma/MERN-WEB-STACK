@@ -770,7 +770,7 @@ We would use 2 Stateful and 1 Stateful component.
    ![final results npm run dev](https://github.com/user-attachments/assets/80d5163f-fd76-4632-a135-4cde53c9c10b)
 
   
-  + We can now go to the browser and enter the url http://localhost:3000 to access the application.
+  + We can now go to the browser and enter the url http://localhost:3000 or http://13.40.9.37:3000 to access the application.
 
 
     ![final results of app running  on browser](https://github.com/user-attachments/assets/334c4fd3-bf89-4dfe-b7fa-02b859d4ef2b)
